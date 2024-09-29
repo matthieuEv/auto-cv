@@ -1,9 +1,21 @@
 {
+  "name": "auto-cv",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node main.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
   "dependencies": {
-    "dotenv": "^16.4.5",
-    "eventsource": "^2.0.2",
-    "fs": "^0.0.1-security",
+    "dotenv": "^16.4.7",
+    "eventsource": "^3.0.2",
     "nunjucks": "^3.2.4",
-    "pocketbase": "^0.21.3"
+    "pocketbase": "^0.25.1",
+    "puppeteer": "^24.1.1"
   }
 }

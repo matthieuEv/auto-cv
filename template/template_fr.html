@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>CV de {{ full_name }}</title>
+</head>
+<body>
+    <h1 id="full_name">{{ full_name }}</h1>
+    <div id="links">
+        <a href="mailto:{{ email }}">{{ email }}</a>
+        {% for name, url in links %}
+            <a href="{{ url }}">{{ name }}</a>
+        {% endfor %}
+    </div>
+    <div class="section">
+        <h2 class="sectionTitle">PROFIL</h2>
+        <p>{{ description }}</p>
+    </div>
+    <div class="section">
+        <h2 class="sectionTitle">COMPETENCES TECHNIQUES</h2>
+        {% for skill in skills %}
+        <p class="listSkills"><span>{{ skill.Name }} : </span>{% for item in skill.list %}{{ item }}{% if not loop.last %} , {% endif %}{% endfor %}</p>
+        {% endfor %}
+    </div>
+    <div class="section">
+        <h2 class="sectionTitle">PROJETS</h2>
+        {% for project in projects %}
+            <p class="listProjects"><span>{{ project.Name }} : </span>{{ project.Description }} <a href="{{ project.Link }}">Github</a></p>
+        {% endfor %}
+    </div>
+    <div class="section">
+        <h2 class="sectionTitle">EXPERIENCES</h2>
+        {% for exp in experience %}
+        <div class="experience">
+            <div class="left">
+                <h2>{{ exp.Title }}</h2>
+                <p>{{ exp.Location }}</p>
+                <ul>
+                    {% for desc in exp.Description %}
+                    <li>{{ desc }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="right">
+                <p class="company">{{ exp.Company }}</p>
+                <p>{{ exp.Start }}, {{ exp.End }}</p>
+                {% if exp.image %}
+                <img src="data:;base64,{{ exp.image }}" alt="">
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="section">
+        <h2 class="sectionTitle">FORMATIONS</h2>
+    {% for edu in education %}
+    <div class="formation">
+        <div class="left">
+            <p class="bold">{{ edu.Name }}</p>
+            <p>{{ edu.Degree }}</p>
+        </div>
+        <div class="right">
+            <p class="bold">{{ edu.Start }} - {{ edu.End }}</p>
+            <p>{{ edu.Location }}</p>
+        </div>
+    </div>
+    {% endfor %}
+    </div>
+    <div class="section">
+        <h2 class="sectionTitle">CERTIFICATIONS</h2>
+        <ul class="listCertifications">
+            {% for cert in certification %}
+                <li><span>{{ cert.Name }}</span> ( {{ cert.Date }} ) {% if cert.Link %}<a href="{{ cert.Link }}">Link</a>{% endif %}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="section">
+        <h2 class="sectionTitle">LANGUES</h2>
+        <ul class="listLanguages">
+            {% for language, level in languages %}
+            <li><span>{{ language }}</span> - {{ level }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="section extracurricular">
+        <h2 class="sectionTitle">CENTRE D'INTERETS</h2>
+        {% for activity in extracurricular %}
+        <p><span>{{ activity.Name }}: </span>{{ activity.Description }}</p>
+        {% endfor %}
+    </div>
+</body>
+</html>
+<style>
+    body{
+        margin: 0px;
+        margin: 40px;
+        padding: 0;
+        background-color: #fff;
+        font-family: 'Arial', sans-serif;
+        font-size: .8em;
+    }
+
+    p{
+        margin: .9em 0;
+    }
+
+    #full_name{
+        display: flex; 
+        justify-content: center;
+    }
+
+    #links{
+        display: flex;
+        justify-content: center;
+    }
+
+    #links a{
+        text-decoration: none;
+        margin: 0 10px;
+    }
+
+    .sectionTitle{
+        color: #6689a5;
+        width: 100%;
+        margin: 0;
+        border-bottom: 1px solid black;
+        font-size: 1.4em;
+        font-weight: lighter;
+    }
+
+    .listSkills span,
+    .listProjects span{
+        font-weight: bold;
+    }
+
+    .experience{
+        display: flex; 
+        justify-content: space-between;
+        padding-bottom: 1em;
+    }
+
+    .experience .right,
+    .experience .left{
+        position: static;
+        width: auto;
+    }
+
+    .experience img{
+        width: 100px;
+    }
+
+    .experience p{
+        margin: .5em 0;
+    }
+
+    .experience .right p{
+        width: 100%;
+        display: flex;
+        justify-content: end;
+    }
+
+    .experience .right .company{
+        font-weight: bold;
+    }
+
+    .experience h2{
+        font-size: 1.2em;
+    }
+
+    .formation{
+        display: flex; 
+        justify-content: space-between;
+        margin: .5em 0;
+    }
+
+    .formation .right,
+    .formation .left{
+        position: static;
+        width: auto;
+    }
+
+    .formation p{
+        margin: 0;
+        padding: 0;
+    }
+
+    .formation .bold{
+        font-weight: bold;
+    }
+
+    .formation .right p{
+        width: 100%;
+        display: block;
+        justify-content: end;
+        text-align: end;
+    }
+
+    .listCertifications span,
+    .listLanguages span,
+    .extracurricular span{
+        font-weight: bold;
+    }
+</style>
