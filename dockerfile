@@ -16,6 +16,8 @@ WORKDIR /app
 
 COPY . .
 
+RUN npm install
+
 ENV DOCKER=1
 
 CMD [ "npm","run","start" ]
