@@ -5,6 +5,11 @@ import 'dotenv/config';
 
 // Fonction pour générer le PDF
 export async function generatePDF(lang, jsonData) {
+  // Créer le répertoire de sortie s'il n'existe pas
+  const outputDir = './output';
+  if (!fs.existsSync(outputDir)) {
+    fs.mkdirSync(outputDir);
+  }
   let outputPdfPath = `./output/cv_${lang}.pdf`;
   // const template = fs.readFileSync("./template/template_en.html", "utf-8");
   // const data = JSON.parse(fs.readFileSync("./example.json", "utf-8"));
