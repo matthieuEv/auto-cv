@@ -34,7 +34,7 @@ pb.collection('AutoCv').subscribe('*', async function (e) {
 });
 
 function clearFiles() {
-  const directory = ['./output','img'];
+  const directory = ['./output'];
 
   directory.forEach(dir => {
     fs.readdir(dir, (err, files) => {
