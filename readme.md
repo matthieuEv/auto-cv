@@ -19,7 +19,6 @@ Then, create a `docker-compose.yml` file with the following content:
 services:
   auto-cv:
     image: ghcr.io/matthieuev/auto-cv/auto-cv:latest
-    platform: "linux/amd64"
     environment:
       POCKETBASE_CLIENT_URL: <YOUR_POCKETBASE_CLIENT_URL>
       POCKETBASE_EMAIL: <YOUR_POCKETBASE_EMAIL>
